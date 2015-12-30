@@ -71,7 +71,7 @@ class Import
         $validate = $this->importModel->validateSource($this->csvSourceFactory->create(
             [
                 'file' => $fileName,
-                'directory' => $this->readFactory->create(getcwd())
+                'directory' => $this->readFactory->create('/')
             ]
         ));
         if (!$validate) {

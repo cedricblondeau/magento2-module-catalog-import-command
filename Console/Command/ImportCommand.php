@@ -66,7 +66,7 @@ class ImportCommand extends Command
         }
 
         try {
-            $import->setFile($input->getArgument('filename'));
+            $import->setFile(realpath($input->getArgument('filename')));
             $result = $import->execute();
             if ($result) {
                 $output->writeln('<info>The import was successful.</info>');
