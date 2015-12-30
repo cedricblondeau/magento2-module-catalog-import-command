@@ -1,0 +1,20 @@
+{
+  "name": "cedricblondeau/magento2-module-catalog-import-command",
+  "description": "Import catalog via console command",
+  "type": "magento2-module",
+  "version": "1.0.0",
+  "license": "MIT",
+  "require": {
+    "php": "~5.5.0|~5.6.0|~7.0.0",
+    "magento/framework": "100.0.*",
+    "magento/module-import-export": "100.0.*"
+  },
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "CedricBlondeau\\CatalogImportCommand\\": ""
+    }
+  }
+}
