@@ -1,7 +1,5 @@
 # magento2-module-catalog-import-command
-Import catalog via console command.
-
-**Work in progress.**
+A console command for importing catalog files.
 
 ## Install
 ```bash
