@@ -116,10 +116,10 @@ class Import
 
     /**
      * @return string
-     * @internal yep, there is a typo here, see https://github.com/magento/magento2/pull/2771
      */
     public function getFormattedLogTrace()
     {
+        // Yep, there is a typo here, see https://github.com/magento/magento2/pull/2771
         return $this->importModel->getFormatedLogTrace();
     }
 
