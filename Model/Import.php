@@ -61,17 +61,19 @@ class Import
     }
 
     /**
-     * @param $fileName
+     * @param $filePath Absolute file path to CSV file
      */
-    public function setFile($fileName)
+    public function setFile($filePath)
     {
-        if (!file_exists($fileName)) {
+        if (!file_exists($filePath)) {
             throw new FileNotFoundException();
         }
+        // Hacky but quick fix for https://github.com/cedricblondeau/magento2-module-catalog-import-command/issues/1
+        $pathInfo = pathinfo($filePath);
         $validate = $this->importModel->validateSource($this->csvSourceFactory->create(
             [
-                'file' => $fileName,
-                'directory' => $this->readFactory->create('/')
+                'file' => $pathInfo['basename'],
+                'directory' => $this->readFactory->create($pathInfo['dirname'])
             ]
         ));
         if (!$validate) {
