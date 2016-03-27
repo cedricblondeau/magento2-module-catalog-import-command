@@ -124,6 +124,14 @@ class Import
     }
 
     /**
+     * @return MagentoImport\ErrorProcessing\ProcessingError[]
+     */
+    public function getErrors()
+    {
+        return $this->importModel->getErrorAggregator()->getAllErrors();
+    }
+
+    /**
      * Perform full reindex
      */
     private function reindex()

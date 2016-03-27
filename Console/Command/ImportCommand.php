@@ -52,8 +52,7 @@ class ImportCommand extends Command
     }
 
     /**
-     * @param InputInterface $input
-     * @param OutputInterface $output
+     * {@inheritdoc}
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
@@ -68,16 +67,26 @@ class ImportCommand extends Command
         try {
             $import->setFile(realpath($input->getArgument('filename')));
             $result = $import->execute();
+
             if ($result) {
                 $output->writeln('<info>The import was successful.</info>');
+                $output->writeln("Log trace:");
+                $output->writeln($import->getFormattedLogTrace());
+            } else {
+                $output->writeln('<error>Import failed.</error>');
+                $errors = $import->getErrors();
+                foreach ($errors as $error) {
+                    $output->writeln('<error>' . $error->getErrorMessage() . ' - ' .$error->getErrorDescription() . '</error>');
+                }
             }
-            $output->writeln("Log trace:");
-            $output->writeln($import->getFormattedLogTrace());
 
         } catch (FileNotFoundException $e) {
             $output->writeln('<error>File not found.</error>');
+
         } catch (\InvalidArgumentException $e) {
             $output->writeln('<error>Invalid source.</error>');
+            $output->writeln("Log trace:");
+            $output->writeln($import->getFormattedLogTrace());
         }
     }
 
