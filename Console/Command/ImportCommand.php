@@ -95,11 +95,6 @@ class ImportCommand extends Command
      */
     private function getImportModel()
     {
-        /**
-         * @todo:
-         * Using Object Manager manually here because we need area code to be set first :/
-         * Not sure how to deal with this. Any better idea would be very welcomed!
-         */
         $this->state->setAreaCode('adminhtml');
         return $this->objectManager->create('CedricBlondeau\CatalogImportCommand\Model\Import');
     }
