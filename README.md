@@ -13,5 +13,8 @@ php bin/magento setup:upgrade
 php bin/magento catalog:import [-i|--images_path[="..."]] [-b|--behavior[="..."]] csv_file
 ```
 
+- `--images_path`: (default `pub/media/catalog/product`)
+- `--behavior`: (default `append`) possible values: append, add_update, replace, delete
+
 ## Inspiration
 - https://github.com/magento/magento2-sample-data/tree/develop/app/code/Magento/ConfigurableSampleData
