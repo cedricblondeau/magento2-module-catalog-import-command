@@ -107,10 +107,10 @@ class Import
      */
     public function execute()
     {
-        $this->eavConfig->clear();
         $result = $this->importModel->importSource();
-        $this->eavConfig->clear();
-        $this->reindex();
+        if ($result) {
+            $this->importModel->invalidateIndex();
+        }
         return $result;
     }
 
@@ -129,16 +129,6 @@ class Import
     public function getErrors()
     {
         return $this->importModel->getErrorAggregator()->getAllErrors();
-    }
-
-    /**
-     * Perform full reindex
-     */
-    private function reindex()
-    {
-        foreach ($this->indexerCollectionFactory->create()->getItems() as $indexer) {
-            $indexer->reindexAll();
-        }
     }
 }
 
