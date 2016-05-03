@@ -93,11 +93,10 @@ class ImportCommand extends Command
     /**
      * @return \CedricBlondeau\CatalogImportCommand\Model\Import
      */
-    private function getImportModel()
+    protected function getImportModel()
     {
         $this->state->setAreaCode('adminhtml');
         return $this->objectManager->create('CedricBlondeau\CatalogImportCommand\Model\Import');
     }
-
 }
 
