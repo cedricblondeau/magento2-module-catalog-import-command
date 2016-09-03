@@ -61,7 +61,7 @@ class Import
     }
 
     /**
-     * @param $filePath Absolute file path to CSV file
+     * @param string $filePath Absolute file path to CSV file
      */
     public function setFile($filePath)
     {
