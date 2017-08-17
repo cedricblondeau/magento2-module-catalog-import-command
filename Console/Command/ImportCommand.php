@@ -47,7 +47,8 @@ class ImportCommand extends Command
             ->setDescription('Import catalog')
             ->addArgument('filename', InputArgument::REQUIRED, "CSV file path")
             ->addOption('images_path', "i", InputOption::VALUE_OPTIONAL, "Images path")
-            ->addOption('behavior', "b", InputOption::VALUE_OPTIONAL, "Behavior");
+            ->addOption('behavior', "b", InputOption::VALUE_OPTIONAL, "Behavior")
+            ->addOption('fields_enclosure', "f", InputOption::VALUE_NONE, "Fields Enclosure");
         parent::configure();
     }
 
@@ -62,6 +63,10 @@ class ImportCommand extends Command
         }
         if ($input->getOption('behavior')) {
             $import->setBehavior($input->getOption('behavior'));
+        }
+        if ($input->getOption('fields_enclosure'))
+        {
+            $import->setFieldsEnclosure(true);
         }
 
         try {
@@ -99,4 +104,3 @@ class ImportCommand extends Command
         return $this->objectManager->create('CedricBlondeau\CatalogImportCommand\Model\Import');
     }
 }
-

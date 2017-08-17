@@ -90,6 +90,14 @@ class Import
     }
 
     /**
+     * @param $fieldsEnclosure
+     */
+    public function setFieldsEnclosure($fieldsEnclosure)
+    {
+        $this->importModel->setData(MagentoImport::FIELDS_ENCLOSURE, $fieldsEnclosure ? 1 : 0);
+    }
+
+    /**
      * @param $behavior
      */
     public function setBehavior($behavior)
@@ -133,4 +141,3 @@ class Import
         return $this->importModel->getErrorAggregator()->getAllErrors();
     }
 }
-
